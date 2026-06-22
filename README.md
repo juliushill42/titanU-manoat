@@ -1,69 +1,44 @@
-# Titan-U Core Microservices (Manoat)
+Here is the clean completion for your **Titan-U Core Microservices (Manoat)** README file, picking up right where your draft left off.
 
-![System Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen)
-![Architecture](https://img.shields.io/badge/Architecture-Distributed_Microservices-blue)
-![License](https://img.shields.io/badge/License-Proprietary-red)
-
-> **Sovereign, local-first AI execution environment with dynamic routing, machine-learning policy enforcement, and isolated Docker sandboxing.**
-
-Titan-U (Manoat) is the foundational microservice architecture for decentralized, autonomous AI operations. It is designed to execute locally, keeping all data sovereign and bypassing external API dependencies. The ecosystem orchestrates LLM inference, trains k-NN models on agent trajectories, and executes code in secure, ephemeral environments.
+This builds out the **Core API Endpoints** based on your architecture details and locks in the **License & Intellectual Property** section for your 2026 timestamp.
 
 ---
 
-## 📑 Table of Contents
+### 🔌 Core API Endpoints
 
-- [System Architecture](#-system-architecture)
-- [Microservices Overview](#-microservices-overview)
-- [Prerequisites](#-prerequisites)
-- [Rapid Deployment](#-rapid-deployment)
-- [Core API Endpoints](#-core-api-endpoints)
-- [License & Intellectual Property](#-license--intellectual-property)
+Each microservice exposes a dedicated REST interface to prevent cross-module interference.
 
----
+#### 1. Model Router (`http://127.0.0.1:8001`)
 
-## 🏗 System Architecture
+* `POST /route` — Evaluates payload incoming requests and returns the optimal local execution target (`ollama` or `llama.cpp`).
+* `POST /inference` — Proxies the structured prompt directly to the selected low-latency backend engine.
 
-The ecosystem relies on three decoupled FastAPI microservices. To prevent port collision and enable horizontal scalability, each module is hard-locked to a dedicated port. 
+#### 2. Policy Engine (`http://127.0.0.1:8002`)
 
-*   **Language Engine:** Python 3.11+
-*   **API Framework:** FastAPI / Uvicorn
-*   **Database:** SQLite (SQLAlchemy ORM)
-*   **Virtualization:** Docker Engine API (v1.44)
-*   **Machine Learning:** Scikit-learn (TF-IDF & k-NN)
+* `POST /trajectories` — Appends a new execution trajectory string into the local relational SQLite database.
+* `POST /predict` — Vectorizes input strings using Scikit-Learn (TF-IDF) and runs real-time k-NN classification to predict the next system action.
+
+#### 3. TitanSand VM (`http://127.0.0.1:8003`)
+
+* `POST /sandbox/create` — Spins up a secure, ephemeral Docker container based on required networking profiles.
+* `POST /sandbox/execute` — Pipes raw code arrays into the isolated environment and returns stdout/stderr logs before destroying the asset.
 
 ---
 
-## ⚙️ Microservices Overview
+### ⚖️ License & Intellectual Property
 
-### 1. Model Router (Port `8001`)
-Dynamically routes inference requests to either local `ollama` or `llama.cpp` backends based on task type (chat, code, summary), cost constraints, and latency requirements.
+**Copyright (c) 2026, TitanU AI / JuJu Labs. All rights reserved.**
 
-### 2. Policy Engine (Port `8002`)
-The brain of the agentic system. It stores agent trajectories and trains real-time k-Nearest Neighbors (k-NN) classifiers to predict optimal actions based on vectorized text inputs. 
+This software ecosystem, architecture blueprint, and its associated runtime scripts constitute a proprietary, sovereign operational framework. By publishing this codebase to an open public timeline, the author establishes an undeniable, publicly timestamped record of **prior art** and legal ownership for the **Manoat Core Microservices Architecture**.
 
-### 3. TitanSand VM (Port `8003`)
-A secure virtualization layer that spins up isolated Docker containers for code execution and autonomous research. Supports air-gapped, proxy-only, and full network modes to prevent malicious code breakouts.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
----
+1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without explicit prior written permission.
 
-## 📦 Prerequisites
-
-Ensure the host machine is configured with the following before deployment:
-
-*   **Python 3.11+**
-*   **Docker Desktop** (Must be running. The system uses `npipe:////./pipe/docker_engine` for Windows host communication).
-*   **Ollama / Llama.cpp** (Ensure local models like `llama3` and `codellama` are pulled and running if executing inference).
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## 🚀 Rapid Deployment
-
-The system is designed for instant, zero-configuration booting via PowerShell.
-
-1. Clone or unpack the repository into your designated command unit drive (e.g., `E:\titanU-manoat`).
-2. Open PowerShell as Administrator.
-3. Execute the automated boot script:
-
-```powershell
-cd E:\titanU-manoat
-.\run_ecosystem.ps1
+This one is completely packaged and ready for the public timeline. Let me know when you're ready to slide the next repository across.
